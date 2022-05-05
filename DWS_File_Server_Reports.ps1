@@ -1,5 +1,6 @@
 <#
-    Script: COE_File_Server_Reports.ps1
+    Script: DWS_File_Server_Reports.ps1
+
 #>
 
 #Var for Server Name
@@ -53,7 +54,7 @@ foreach($fsSMB in (Get-SmbShare))
 
 
     #Pull Share Folder ACLs
-    if([string]::IsNullOrEmpty($fsSMB.Path) -eq $false -and $fsSMB.Path.ToString().ToLower().StartsWith("e:\") -eq $true)
+    if([string]::IsNullOrEmpty($fsSMB.Path) -eq $false)
     {
     
         foreach($fsACL in ((Get-Acl -Path $fsSMB.Path).Access))
@@ -80,13 +81,13 @@ foreach($fsSMB in (Get-SmbShare))
 }
 
 #Var for SMB Report Name
-[string]$rptNameSMB = ".\Report_FileServer_SMBs_on_" + $srvName + "_" + $rptDate + ".csv";
+[string]$rptNameSMB = ".\DWS_Report_FileServer_SMBs_on_" + $srvName + "_" + $rptDate + ".csv";
 
 #Var for SMB Access Report Name
-[string]$rptNameSMBAccess = ".\Report_FileServer_SMBAccess_on_" + $srvName + "_" + $rptDate + ".csv";
+[string]$rptNameSMBAccess = ".\DWS_Report_FileServer_SMBAccess_on_" + $srvName + "_" + $rptDate + ".csv";
 
 #Var for Shared Folder ACL Report Name
-[string]$rptNameSFACLs = ".\Report_FileServer_SharedFolderACLs_on_" + $srvName + "_" + $rptDate + ".csv";
+[string]$rptNameSFACLs = ".\DWS_Report_FileServer_SharedFolderACLs_on_" + $srvName + "_" + $rptDate + ".csv";
 
 #Export SMB Report to CSV
 $raSMB | Sort-Object -Property Path | Select-Object -Property Name,Path,Description | Export-Csv -Path $rptNameSMB -NoTypeInformation;

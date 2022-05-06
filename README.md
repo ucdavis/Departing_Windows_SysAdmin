@@ -1,12 +1,19 @@
 ## Departing Windows SysAdmin
 
-A collection of scripts to run on Windows servers when one of your colleagues departs from the unit. 
+We've all had colleagues leave our units for greener pastures. The idea behind this repo was to keep a collection of scripts to run when that happens and suggestions on next steps.
 
-These scripts are designed to help you identify issues that might arise after they are gone. 
+In our situation, the departing admin managed our file, print, and various other resource servers.
 
-The file server script will report shares setup on a system. Along with the share and ACL permissions. 
+Each script is designed to be run on the server they are reporting on. Making sure we didn't miss anything due to a firewall configuration or GPO setting.
 
-The general server script, pulls processes, services, and scheduled tasks and reports on their configurations. You wouldn't want a production scheduled task running under an account you're going to disable in a few weeks. 
+- File Server Script
+ - Report on all established shares
+ - Report sharing and ACL permissions for each share
+- General Server Script
+ - Report on the currently running processes. If possible, list the ports they are listening on
+ - Report on all services on the system
+ - Report on all scheduled tasks
+ - For each determine which account they are running under and the location of the executable
 
 
 

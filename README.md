@@ -16,5 +16,12 @@ Each script is designed to be run on the server they are reporting on. Making su
 - Report on all scheduled tasks
 - For each determine which account they are running under and the location of the executable
 
+#### Print Server Script
+- Report all printers on the server
+- Show port name and driver information
+
+#### Suggestions
+- Look over reports and find any resources running under or configured to use the account of the departing admin
+- Check for any unfamiliar file shares or services
 
 
